@@ -60,7 +60,7 @@ export default function Home() {
             >
               <h2>Check &rarr;</h2>
               <p>
-                Check if software you're running is vulnerable.
+                Check if software you are running is vulnerable.
               </p>
             </a>
           </Link>
