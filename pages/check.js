@@ -12,9 +12,15 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <p> hi </p> 
+        <form action="/api/form" method="post">
+          <label htmlFor="first">First Name</label>
+          <input type="text" id="first" name="first" required />
 
-      {/* throw in a text box to hit an API search for e.g. CVE */}
+          <label htmlFor="last">Last Name</label>
+          <input type="text" id="last" name="last" required />
+
+          <button type="submit">Submit</button>
+        </form>
 
       </main>
 
