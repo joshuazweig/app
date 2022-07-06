@@ -7,8 +7,14 @@ class JSForm extends Component {
 
   render() {
     return (
+      
       <div>
         <form 
+          onChange={event => {
+            this.setState({
+              input: event.target.value,
+            });
+          }}
           onSubmit={async event => {
             event.preventDefault()
             this.setState({
@@ -47,7 +53,9 @@ class JSForm extends Component {
           <button type="submit">Submit</button>
         </form>
           <p> Requested Product Lookup: {this.state.software_title} + {this.state.software_version} </p>
+          <p> {this.state.input} </p>
           <p> {this.state.req_result} </p>
+        
       </div>
     );
   }
