@@ -8,10 +8,12 @@
   },
   "dependencies": {
     "@heroicons/react": "^1.0.6",
+    "google-auth-library": "^8.1.0",
     "next": "12.1.4",
     "rc-table": "^7.23.0",
     "react": "18.0.0",
     "react-dom": "18.0.0",
+    "react-google-login": "^5.2.2",
     "react-js-pagination": "^3.0.3",
     "react-pure-modal": "^2.1.0",
     "react-transition-group": "^4.4.2"

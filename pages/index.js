@@ -2,7 +2,8 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-
+import LoginHooks from '../components/LoginHooks';
+import LogoutHooks from '../components/LogoutHooks';
 
 export default function Home() {
   return (
@@ -30,6 +31,7 @@ export default function Home() {
               <p>
                 Login to your instance of Ohm.
               </p>
+              <LoginHooks />
             </a>
           </Link>
 
