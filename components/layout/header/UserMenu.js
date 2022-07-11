@@ -1,11 +1,17 @@
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/solid';
 import React, { useEffect, useRef, useState } from "react";
 import OutsideClick from '../../../utils/outsideClick';
+import {userContext} from '../../userContext';
+import jwt_decode from "jwt-decode";
+
+
 
 const UserMenu = () => {
   const [userMenuStatus, setUserMenuStatus] = useState(false) ;
   const buttonRef = useRef(null);
   const buttonOutsideClick = OutsideClick(buttonRef);
+  const name = useState("name");
+  const pic = useState("pic");
 
   const userMenuhandle =()=>{
     setUserMenuStatus(!userMenuStatus)
@@ -22,12 +28,18 @@ const UserMenu = () => {
     <button className="inline-flex items-center p-2 hover:bg-gray-100 focus:bg-gray-100 rounded-lg relative" onClick={userMenuhandle} ref={buttonRef}>
       <span className="sr-only">User Menu</span>
       <div className="hidden md:flex md:flex-col md:items-end md:leading-tight">
-        <span className="font-semibold">Grace Simmons</span>
-        <span className="text-sm text-gray-600">Lecturer</span>
+        <span className="font-semibold">
+        <userContext.Consumer>
+          {({currentUser}) => {
+            console.log({currentUser});
+          }}
+        </userContext.Consumer>
+        </span>
+        <span className="text-sm text-gray-600">Admin</span>
       </div>
       <span className="h-12 w-12 ml-2 sm:ml-3 mr-2 bg-gray-100 rounded-full overflow-hidden">
         <img
-          src="https://randomuser.me/api/portraits/women/68.jpg"
+          src={pic}
           alt="user profile photo"
           className="h-full w-full object-cover"
         />

@@ -1,44 +1,41 @@
-import Link from 'next/link';
-import React from 'react';
-import { useGoogleLogin } from 'react-google-login';
+import React, { Component } from 'react';
+import { GoogleLogin } from '@react-oauth/google';
+import jwt_decode from "jwt-decode";
+import {userContext} from './userContext';
 
-// refresh token
-import { refreshTokenSetup } from '../utils/refreshToken';
 
-const clientId =
-  '842383048916-etubeamk7ifak28fpeb62uigctesh2js.apps.googleusercontent.com';
-
-function LoginHooks() {
-  const onSuccess = (res) => {
-    console.log('Login Success: currentUser:', res.profileObj);
-    refreshTokenSetup(res);
-    <Link href="/home"> </Link>
+class LoginHooks extends Component {
+  state = {
+    currentUser: {}
   };
 
-  const onFailure = (res) => {
-    console.log('Login failed: res:', res);
-    /*alert(
-      `Failed to login. 😢 `
-    );*/
-  };
-
-  const { signIn } = useGoogleLogin({
-    onSuccess,
-    onFailure,
-    clientId,
-    isSignedIn: true,
-    accessType: 'offline',
-    // responseType: 'code',
-    // prompt: 'consent',
-  });
-
-  return (
-    <button onClick={signIn} className="button">
-      <img src="google.svg" alt="google login" className="icon"></img>
-
-      <span className="buttonText">Sign in with Google</span>
-    </button>
-  );
+  render() {
+    return (
+      
+      <div>
+        
+          <GoogleLogin
+            onSuccess={credentialResponse => {
+              const userObject = jwt_decode(credentialResponse.credential);
+              const { name, email, picture } = userObject;
+              this.setState({
+                uobj: userObject
+              })
+              this.setState({
+                currentUser: {
+                  name: name,
+                  email: email,
+                  pic: picture,
+                }
+              });
+            }}  
+            onError={() => {
+              console.log('Login Failed');
+            }}
+          />
+      </div>
+    );
+  }
 }
 
 export default LoginHooks;

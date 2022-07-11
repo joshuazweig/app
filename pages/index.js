@@ -3,9 +3,21 @@ import Link from 'next/link'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import LoginHooks from '../components/LoginHooks';
-import LogoutHooks from '../components/LogoutHooks';
+// import LogoutHooks from '../components/LogoutHooks';
+import React, { Component } from 'react';
+import useSWR from 'swr';
+
+const fetcher = (url) => fetch(url).then((res) => res.json());
+
 
 export default function Home() {
+  const { data, error } = useSWR('/api/staticdata', fetcher);
+  //Handle the error state
+  if (error) return <div>Failed to load</div>;
+  //Handle the loading state
+  if (!data) return <div>Loading...</div>;
+
+
   return (
     <div className={styles.container}>
       <Head>
@@ -24,6 +36,8 @@ export default function Home() {
           <code className={styles.code}>security</code>
         </p>
 
+        <LoginHooks/>
+
         <div className={styles.grid}>
         <Link href="/home">
             <a className={styles.card} >
@@ -31,7 +45,6 @@ export default function Home() {
               <p>
                 Login to your instance of Ohm.
               </p>
-              <LoginHooks />
             </a>
           </Link>
 
@@ -45,6 +58,14 @@ export default function Home() {
           </Link>
         </div>
       </main>
+
+      <h1>My Framework from file</h1>
+      <ul>
+        <li>Name: {data.record.name}</li>
+        <li>Language: {data.record.language}</li>
+      </ul>
+
+
 
       <footer className={styles.footer}>
         <a
