@@ -11,12 +11,6 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 
 export default function Home() {
-  const { data, error } = useSWR('/api/staticdata', fetcher);
-  //Handle the error state
-  if (error) return <div>Failed to load</div>;
-  //Handle the loading state
-  if (!data) return <div>Loading...</div>;
-
 
   return (
     <div className={styles.container}>
@@ -58,14 +52,6 @@ export default function Home() {
           </Link>
         </div>
       </main>
-
-      <h1>My Framework from file</h1>
-      <ul>
-        <li>Name: {data.record.name}</li>
-        <li>Language: {data.record.language}</li>
-      </ul>
-
-
 
       <footer className={styles.footer}>
         <a
