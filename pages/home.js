@@ -8,7 +8,7 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function Index() {
 
-  const { data, error } = useSWR('/api/staticdata', fetcher);
+  const { data, error } = useSWR('/api/staticdata', fetcher, { fallbackData: {}});
   if (error) return <div>Failed to load</div>;
   console.log(data);
   const rows = [
