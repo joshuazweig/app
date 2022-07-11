@@ -1,7 +1,7 @@
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/solid';
 import React, { useEffect, useRef, useState } from "react";
 import OutsideClick from '../../../utils/outsideClick';
-import {userContext} from '../../userContext';
+// import {userContext} from '../../userContext';
 import jwt_decode from "jwt-decode";
 
 
@@ -29,11 +29,11 @@ const UserMenu = () => {
       <span className="sr-only">User Menu</span>
       <div className="hidden md:flex md:flex-col md:items-end md:leading-tight">
         <span className="font-semibold">
-        <userContext.Consumer>
+        {/* <userContext.Consumer>
           {({currentUser}) => {
             console.log({currentUser});
           }}
-        </userContext.Consumer>
+        </userContext.Consumer> */}
         </span>
         <span className="text-sm text-gray-600">Admin</span>
       </div>
