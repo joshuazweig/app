@@ -15,7 +15,6 @@ const Header = ({mobileNavsidebar, setMobileNavsidebar}) => {
         <div className="flex flex-shrink-0 items-center ml-auto">
          <UserMenu />
           <div className="border-l pl-3 ml-3 space-x-1">
-            <Notifications />
             <LogOutButton />
           </div>
         </div>

@@ -2,8 +2,6 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import LoginHooks from '../components/LoginHooks';
-// import LogoutHooks from '../components/LogoutHooks';
 import React, { Component } from 'react';
 import useSWR from 'swr';
 
@@ -30,8 +28,8 @@ export default function Home() {
           <code className={styles.code}>security</code>
         </p>
 
-        <LoginHooks/>
-
+        <a href="/api/auth/login">Login</a>
+        
         <div className={styles.grid}>
         <Link href="/home">
             <a className={styles.card} >
